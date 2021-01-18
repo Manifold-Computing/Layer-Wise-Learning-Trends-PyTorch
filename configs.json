@@ -10,7 +10,7 @@
     ],
     "model_name": "Resnet50",
     "api_key" : "y8YtCd3TVO7TurC3t1D0LP7Ju",
-    "project_name": "relative-weight-change",
+    "project_name": "baseline-exp-rwc",
     "dataset": "CIFAR-10",
     "lr": 0.01,
     "momentum": 0.9,
