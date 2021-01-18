@@ -1,5 +1,6 @@
 import numpy as np
 import json
+import pickle
 from types import SimpleNamespace
 from main import run_experiment
 
@@ -23,20 +24,23 @@ def multi_train(configs_path="./configs.json"):
         rmae_dict, train_acc_arr, test_acc_arr = run_experiment(
             configs.epochs, configs.model_name, "untrained", configs)
 
-        for layer in rmae_dict:
-            if layer not in average_rmae_dict:
-                average_rmae_dict[layer] = np.array(rmae_dict[layer])
-            else:
-                average_rmae_dict[layer] += np.array(rmae_dict[layer])
+        with open(f"{configs.save_directory}{configs.exp_name}_rmae.pkl", 'wb') as f:
+            pickle.dump(rmae_dict, f, pickle.HIGHEST_PROTOCOL)
 
-        average_train_acc += train_acc_arr
-        average_test_acc += test_acc_arr
+    #     for layer in rmae_dict:
+    #         if layer not in average_rmae_dict:
+    #             average_rmae_dict[layer] = np.array(rmae_dict[layer])
+    #         else:
+    #             average_rmae_dict[layer] += np.array(rmae_dict[layer])
 
-    for layer in average_rmae_dict:
-        average_rmae_dict[layer] /= 5
+    #     average_train_acc += train_acc_arr
+    #     average_test_acc += test_acc_arr
 
-    average_train_acc /= len(configs.seed_list)
-    average_test_acc /= len(configs.seed_list)
+    # for layer in average_rmae_dict:
+    #     average_rmae_dict[layer] /= 5
+
+    # average_train_acc /= len(configs.seed_list)
+    # average_test_acc /= len(configs.seed_list)
 
     print("Done!")
 

@@ -38,12 +38,13 @@ def run_experiment(epochs, model_name, training_type, configs):
     optimizer = optim.SGD(model.parameters(), configs.lr,
                           momentum=configs.momentum,
                           weight_decay=configs.weight_decay)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
     # get tracking dictionaries
     model_weights, layer_dict = setup_delta_tracking(model)
 
     # train model
     rmae_delta_dict, train_acc_arr, test_acc_arr = training(
-        epochs, loaders, model, optimizer, criterion, model_weights, layer_dict, configs)
+        epochs, loaders, model, optimizer, scheduler, criterion, model_weights, layer_dict, configs)
 
     return rmae_delta_dict, train_acc_arr, test_acc_arr

@@ -105,3 +105,6 @@ class ResNet(nn.Module):
 
 def ResNet18(num_classes, input_channels):
     return ResNet(BasicBlock, [2, 2, 2, 2], input_channels=input_channels, num_classes=num_classes)
+
+def ResNet50(num_classes, input_channels):
+    return ResNet(Bottleneck, [3, 4, 6, 3], input_channels=input_channels, num_classes=num_classes)

@@ -1,6 +1,6 @@
 {
-    "epochs": 150,
-    "exp_name": "RMAE_Alexnet_CIFAR10",
+    "epochs": 200,
+    "exp_name": "RMAE_Resnet50_CIFAR10",
     "seed_list": [
         0,
         42,
@@ -8,11 +8,14 @@
         1000,
         1234
     ],
-    "model_name": "Alexnet",
+    "model_name": "Resnet50",
+    "api_key" : "y8YtCd3TVO7TurC3t1D0LP7Ju",
+    "project_name": "relative-weight-change",
     "dataset": "CIFAR-10",
-    "lr": 0.001,
+    "lr": 0.01,
     "momentum": 0.9,
-    "weight_decay": 1e-4,
+    "weight_decay": 5e-4,
     "batch_size": 128,
-    "target_val_acc": 94.0
+    "target_val_acc": 94.0,
+    "save_directory" : "/content/drive/My Drive/Relative Weights/New_Experiments/"
 }

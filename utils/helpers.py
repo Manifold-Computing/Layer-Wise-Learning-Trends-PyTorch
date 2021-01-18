@@ -2,7 +2,7 @@ import torch.nn as nn
 import torchvision
 import torch
 
-from models.resnet import ResNet18
+from models.resnet import ResNet18, ResNet50
 from models.vgg import vgg19_bn
 from models.alexnet import AlexNet
 
@@ -34,6 +34,17 @@ def load_model(model_name, training_type, configs):
         elif training_type == "untrained":
             print("Loading untrained Resnet18")
             model = ResNet18(num_classes=configs.num_classes,
+                             input_channels=configs.input_channels)
+    elif model_name == "Resnet18":
+        # load weights
+        if training_type == "pretrained":
+            print("Loading pretrained Resnet50")
+            model = torchvision.models.resnet50(pretrained=True)
+            model.fc.Linear = nn.Linear(model.fc.in_features, 10)
+
+        elif training_type == "untrained":
+            print("Loading untrained Resnet50")
+            model = ResNet50(num_classes=configs.num_classes,
                              input_channels=configs.input_channels)
     elif model_name == "VGG19":
         # load weights

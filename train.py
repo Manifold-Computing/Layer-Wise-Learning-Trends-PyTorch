@@ -4,7 +4,7 @@ import numpy as np
 from utils.delta import compute_delta
 
 
-def training(epochs, loaders, model, optimizer, criterion, prev_list,
+def training(epochs, loaders, model, optimizer, scheduler, criterion, prev_list,
              rmae_delta_dict, configs):
     """
     Performs training and evaluation.
@@ -91,5 +91,7 @@ def training(epochs, loaders, model, optimizer, criterion, prev_list,
             f"Epoch: {epoch} \tTrain Loss: {train_loss} \tTrain Acc: {train_acc}% \tTest Loss: {test_loss} \tTest Acc: {test_acc}%")
         if float(test_acc) >= configs.target_val_acc:
             break
+            
+        scheduler.step()
 
     return rmae_delta_dict, np.asarray(train_acc_arr), np.asarray(test_acc_arr)
