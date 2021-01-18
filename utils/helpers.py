@@ -35,7 +35,7 @@ def load_model(model_name, training_type, configs):
             print("Loading untrained Resnet18")
             model = ResNet18(num_classes=configs.num_classes,
                              input_channels=configs.input_channels)
-    elif model_name == "Resnet18":
+    elif model_name == "Resnet50":
         # load weights
         if training_type == "pretrained":
             print("Loading pretrained Resnet50")
