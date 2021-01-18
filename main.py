@@ -16,6 +16,13 @@ def run_experiment(epochs, model_name, training_type, configs):
 
     print(epochs, "CONFIGS: ", configs)
 
+    experiment = Experiment(api_key=configs.api_key,
+                            project_name=configs.project_name, workspace="ayushm-agrawal")
+
+    experiment.set_name(configs.exp_name)
+
+    experiment.log_parameters(configs)
+
     # set seed for reproducibility.
     seed = configs.seed
     random.seed(seed)
@@ -45,6 +52,6 @@ def run_experiment(epochs, model_name, training_type, configs):
 
     # train model
     rmae_delta_dict, train_acc_arr, test_acc_arr = training(
-        epochs, loaders, model, optimizer, scheduler, criterion, model_weights, layer_dict, configs)
+        epochs, loaders, model, optimizer, scheduler, criterion, model_weights, layer_dict, configs, experiment)
 
     return rmae_delta_dict, train_acc_arr, test_acc_arr

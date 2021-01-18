@@ -5,7 +5,7 @@ from utils.delta import compute_delta
 
 
 def training(epochs, loaders, model, optimizer, scheduler, criterion, prev_list,
-             rmae_delta_dict, configs):
+             rmae_delta_dict, configs, experiment):
     """
     Performs training and evaluation.
     """
