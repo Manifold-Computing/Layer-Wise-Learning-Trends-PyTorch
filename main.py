@@ -1,5 +1,5 @@
 import random
-
+from comet_ml import Experiment
 import torch
 import numpy as np
 import torch.nn as nn

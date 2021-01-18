@@ -3,6 +3,7 @@ import json
 import pickle
 from types import SimpleNamespace
 from main import run_experiment
+from comet_ml import Experiment
 
 
 def multi_train(configs_path="./configs.json"):
