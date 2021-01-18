@@ -12,6 +12,7 @@ def load_model(model_name, training_type, configs):
     Loads model.
     """
 
+    print("Model: ", model_name)
     # set the input channels and num_classes
     if configs.dataset == "MNIST" or configs.dataset == "FashionMNIST":
         configs.num_classes = 10
