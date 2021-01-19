@@ -55,7 +55,7 @@ def training(epochs, loaders, model, optimizer, scheduler, criterion, prev_list,
 
         # compute layer deltas after epoch.
         rmae_delta_dict, prev_list = compute_delta(
-            model, prev_list, rmae_delta_dict, experiment)
+            model, prev_list, rmae_delta_dict, experiment, epoch)
 
         model.eval()
         with torch.no_grad():

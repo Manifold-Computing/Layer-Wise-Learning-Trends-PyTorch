@@ -46,7 +46,7 @@ def setup_delta_tracking(model):
     return weights, layers_dict
 
 
-def compute_delta(model, prev_model_weights, rwc_deltas, experiment):
+def compute_delta(model, prev_model_weights, rwc_deltas, experiment, epoch):
     """Function calculates Relative Weight Change between two model weights
 
     Args:
