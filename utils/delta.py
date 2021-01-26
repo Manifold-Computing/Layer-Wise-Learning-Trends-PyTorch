@@ -13,13 +13,15 @@ def relative_weight_change(prev_list, curr_list):
     """
 
     # subtract
-    sub = np.subtract(prev_list, curr_list)
-    # absolute
-    absolute = np.abs(sub)
+    sub = np.subtract(curr_list, prev_list)
+    # # absolute
+    # absolute = np.abs(sub)
+    # squared
+    square = np.square(sub)
     # normalization term
     normalizer = np.abs(prev_list)
     # relative error
-    relative = absolute/normalizer
+    relative = square/normalizer
 
     return relative.mean()
 
